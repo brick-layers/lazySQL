@@ -2,6 +2,7 @@
 'use strict'
 
 const program = require('commander')
+const chalk = require('chalk')
 const pkg = require('./package.json')
 
 program
