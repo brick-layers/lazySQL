@@ -11,8 +11,8 @@ program
   .alias('l')
   .description('lay some model foundations')
   .action((JSONPath, buildPath) => {
-    console.log('json path:', JSONPath)
-    console.log('build destination path:', buildPath)
+    console.log(chalk.green('json path:'), JSONPath)
+    console.log(chalk.green('build destination path:'), buildPath)
   })
 
 program.parse(process.argv)
