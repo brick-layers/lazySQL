@@ -7,6 +7,9 @@
   "author": "brick-layers",
   "license": "MIT",
   "private": false,
+  "scripts": {
+    "start": "node index.js lay tests/testInput.json tests/output.js"
+  },
   "devDependencies": {
     "eslint": "^4.10.0",
     "eslint-config-standard": "^10.2.1",
