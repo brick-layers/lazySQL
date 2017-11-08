@@ -19,7 +19,7 @@ program
     fs.readFile(JSONPath, (err, data) => {
       if (err) throw err
       // insert logic
-      operator(JSON.parse(data.toString()))
+      operator(buildPath, JSON.parse(data.toString()))
     })
   })
 

@@ -1,10 +1,18 @@
+const fs = require('fs')
+
 const Model = require('./models')
 
-function operator (data) {
+function operator (buildPath, data) {
   console.log('data', data)
   Object.keys(data).forEach(key => {
     const model = new Model(key, data[key])
-    model.parse()
+    writeFile(buildPath, model.filename, model.parse())
+  })
+}
+
+function writeFile (buildPath, fileName, content) {
+  fs.writeFile(`${buildPath}/${fileName}`, content, err => {
+    console.log(err)
   })
 }
 
