@@ -6,6 +6,8 @@ const chalk = require('chalk')
 const pkg = require('./package.json')
 const fs = require('fs')
 
+const operator = require('./src').operator
+
 program
   .version(pkg.version)
   .command('lay <JSONPath> <buildPath>')
@@ -17,10 +19,7 @@ program
     fs.readFile(JSONPath, (err, data) => {
       if (err) throw err
       // insert logic
-      fs.writeFile(buildPath, data, err => {
-        if (err) throw err
-        console.log(chalk.green('Done.'))
-      })
+      operator(JSON.parse(data.toString()))
     })
   })
 
