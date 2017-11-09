@@ -30,7 +30,7 @@ const writeFile = (buildPath, fileName, content) => {
   if (!fs.existsSync(buildPath)) {
     fs.mkdirSync(buildPath)
   }
-  content = prettier.format(content, { semi: false })
+  content = prettier.format(content, { semi: false, singleQuote: true })
   fs.writeFile(`${buildPath}/${fileName}`, content, err => {
     if (err) console.log(err)
   })
