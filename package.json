@@ -8,7 +8,8 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "start": "node index.js lay tests/testInput.json tests/output"
+    "start": "node index.js lay tests/testInput.json tests/output",
+    "clear": "rm -rf tests/output"
   },
   "devDependencies": {
     "eslint": "^4.10.0",
