@@ -1,7 +1,9 @@
 const fs = require('fs')
 
+const Db = require('./_db')
+const Index = require('./_index')
 const Model = require('./_models')
-const Index = require('./_models-index')
+const ModelIndex = require('./_models-index')
 const prettier = require('prettier')
 
 const operator = (buildPath, data) => {
@@ -9,6 +11,14 @@ const operator = (buildPath, data) => {
   if (!fs.existsSync(buildPath)) {
     fs.mkdirSync(buildPath)
   }
+
+  // Create root index file
+  const index = new Index()
+  writeFile(buildPath, 'index.js', index.output)
+
+  // Create db file
+  const db = new Db(data.db)
+  writeFile(buildPath, 'db.js', db.output)
 
   // Create array of Models
   const models = Object.keys(data.models).map(
@@ -21,9 +31,8 @@ const operator = (buildPath, data) => {
   )
 
   // Create /models/index.js file
-  const index = new Index(models)
-  console.log(index.output)
-  writeFile(buildPath + '/models', 'index.js', index.output)
+  const modelIndex = new ModelIndex(models, data.associations)
+  writeFile(buildPath + '/models', 'index.js', modelIndex.output)
 }
 
 const writeFile = (buildPath, fileName, content) => {

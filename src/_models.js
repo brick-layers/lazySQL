@@ -3,7 +3,7 @@ class Model {
     this.name = name
     this.filename = name + '.js'
     this.fields = fields
-    this.output = null
+    this.output = ''
     // magic happens in here
     // return: formatted string for write file
     this.inputToString()
