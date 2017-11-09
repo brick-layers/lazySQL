@@ -33,8 +33,8 @@
       }
     },
     "Product": {
-      "belongsTo": {
-        "User": { "as": "possession" }
+      "belongsToMany": {
+        "User": { "through": "UserProduct" }
       }
     }
   },
