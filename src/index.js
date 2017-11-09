@@ -2,6 +2,7 @@ const fs = require('fs')
 
 const Model = require('./_models')
 const Index = require('./_models-index')
+const prettier = require('prettier')
 
 const operator = (buildPath, data) => {
   // Create /destination directory
@@ -29,7 +30,7 @@ const writeFile = (buildPath, fileName, content) => {
   if (!fs.existsSync(buildPath)) {
     fs.mkdirSync(buildPath)
   }
-
+  content = prettier.format(content, { semi: false })
   fs.writeFile(`${buildPath}/${fileName}`, content, err => {
     if (err) console.log(err)
   })
