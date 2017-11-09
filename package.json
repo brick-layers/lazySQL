@@ -12,6 +12,9 @@
       "yarn run clear && node index.js lay tests/testInput.json tests/output",
     "clear": "rm -rf tests/output"
   },
+  "bin": {
+    "lazysql": "./index.js"
+  },
   "devDependencies": {
     "eslint": "^4.10.0",
     "eslint-config-standard": "^10.2.1",
