@@ -13,7 +13,22 @@ class Model {
   }
 
   inputToString () {
-    this.output = JSON.stringify(this.fields, null, 2)
+    this.output = this.objToString(this.fields)
+  }
+
+  objToString (obj) {
+    var str = '{\n'
+    for (var p in obj) {
+      if (obj.hasOwnProperty(p)) {
+        if (typeof obj[p] === 'object') {
+          str += p + ': {\n' + this.objToString(obj[p]) + '}\n'
+        } else {
+          str += p + ':' + obj[p] + '\n'
+        }
+      }
+    }
+    str += '}'
+    return str
   }
 
   // add header (required dependencies)

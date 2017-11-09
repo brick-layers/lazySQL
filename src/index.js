@@ -11,6 +11,9 @@ const operator = (buildPath, data) => {
 }
 
 const writeFile = (buildPath, fileName, content) => {
+  if (!fs.existsSync(buildPath)) {
+    fs.mkdirSync(buildPath)
+  }
   fs.writeFile(`${buildPath}/${fileName}`, content, err => {
     if (err) console.log(err)
   })
