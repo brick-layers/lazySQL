@@ -1,5 +1,5 @@
 const fs = require('fs')
-
+const prettier = require('prettier')
 const Model = require('./models')
 
 const operator = (buildPath, data) => {
@@ -14,6 +14,7 @@ const writeFile = (buildPath, fileName, content) => {
   if (!fs.existsSync(buildPath)) {
     fs.mkdirSync(buildPath)
   }
+  content = prettier.format(content, { semi: false })
   fs.writeFile(`${buildPath}/${fileName}`, content, err => {
     if (err) console.log(err)
   })
