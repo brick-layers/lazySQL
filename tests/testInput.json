@@ -8,7 +8,7 @@
   "models": {
     "User": {
       "name": {
-        "type": "string"
+        "type": "Sequelize.STRING"
       },
       "age": {
         "type": "Sequelize.INTEGER",

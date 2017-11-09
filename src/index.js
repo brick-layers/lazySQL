@@ -1,6 +1,7 @@
 const fs = require('fs')
 
-const Model = require('./models')
+const Model = require('./_models')
+const Index = require('./_models-index')
 
 const operator = (buildPath, data) => {
   // Create /destination directory
@@ -17,6 +18,11 @@ const operator = (buildPath, data) => {
   models.forEach(model =>
     writeFile(buildPath + '/models', model.filename, model.output)
   )
+
+  // Create /models/index.js file
+  const index = new Index(models)
+  console.log(index.output)
+  writeFile(buildPath + '/models', 'index.js', index.output)
 }
 
 const writeFile = (buildPath, fileName, content) => {
