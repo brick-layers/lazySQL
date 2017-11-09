@@ -1,1 +1,8 @@
-{"fieldA":{"type":"Sequelize.STRING"},"fieldB":{"type":"Sequelize.STRING"}}
+{
+  "fieldA": {
+    "type": "Sequelize.STRING"
+  },
+  "fieldB": {
+    "type": "Sequelize.STRING"
+  }
+}

@@ -6,7 +6,7 @@ class Model {
   }
 
   parse () {
-    return JSON.stringify(this.fields)
+    return JSON.stringify(this.fields, null, 2)
   }
 }
 
