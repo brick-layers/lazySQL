@@ -1,6 +1,6 @@
 {
   "fieldA": {
-    "type": "Sequelize.STRING"
+    "type": "string"
   },
   "fieldB": {
     "type": "Sequelize.STRING"
