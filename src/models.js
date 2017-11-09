@@ -21,9 +21,9 @@ class Model {
     for (var p in obj) {
       if (obj.hasOwnProperty(p)) {
         if (typeof obj[p] === 'object') {
-          str += p + ': {\n' + this.objToString(obj[p]) + '}\n'
+          str += p + ': \n' + this.objToString(obj[p]) + ',\n'
         } else {
-          str += p + ':' + obj[p] + '\n'
+          str += p + ':' + obj[p] + ',\n'
         }
       }
     }
