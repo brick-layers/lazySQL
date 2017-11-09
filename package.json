@@ -1,6 +1,6 @@
 {
   "name": "lazySQL",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "An unopinionated Sequelize model and association builder.",
   "main": "index.js",
   "repository": "git@github.com:brick-layers/lazySQL.git",
