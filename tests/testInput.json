@@ -1,21 +1,31 @@
 {
-  "User": {
-    "name": {
-      "type": "string"
-    },
-    "age": {
-      "type": "Sequelize.INTEGER",
-      "defaultValue": 20
+  "db": {
+    "URI": "postgres://localhost:5432/das-brick-layer",
+    "options": {
+      "logging": false
     }
   },
-  "Product": {
-    "title": {
-      "type": "Sequelize.STRING"
+  "models": {
+    "User": {
+      "name": {
+        "type": "string"
+      },
+      "age": {
+        "type": "Sequelize.INTEGER",
+        "defaultValue": 20
+      }
     },
-    "quantity": {
-      "type": "Sequelize.STRING",
-      "allowNull": false,
-      "defaultValue": 10
+    "Product": {
+      "title": {
+        "type": "Sequelize.STRING"
+      },
+      "quantity": {
+        "type": "Sequelize.STRING",
+        "allowNull": false,
+        "defaultValue": 10
+      }
     }
-  }
+  },
+  "associations": {},
+  "options": {}
 }
