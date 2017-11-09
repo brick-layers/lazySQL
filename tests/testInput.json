@@ -26,6 +26,17 @@
       }
     }
   },
-  "associations": {},
+  "associations": {
+    "User": {
+      "hasMany": {
+        "Product": null
+      }
+    },
+    "Product": {
+      "belongsTo": {
+        "User": { "as": "possession" }
+      }
+    }
+  },
   "options": {}
 }

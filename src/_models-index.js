@@ -4,6 +4,7 @@ class Index {
     this.output = ''
 
     this.addImports()
+    // this.addAssociations()
     this.addExports()
   }
 
@@ -12,6 +13,8 @@ class Index {
       this.output += `const ${model.name} = require('./${model.name}')\n`
     })
   }
+
+  addAssociations () {}
 
   addExports () {
     this.output += 'module.exports = {\n'
