@@ -25,12 +25,15 @@ class Model {
 
   // add footer (module.exports)
   addFooter () {
-    this.output = this.output + '\nmodule.exports = { Product }\n'
+    this.output = this.output + `\nmodule.exports = { ${this.name} }\n`
   }
 
   // add db.define (or something)
   addModelWrapper () {
-    this.output = "const Product = db.define('product', " + this.output + ')\n'
+    this.output =
+      `const ${this.name} = db.define('${this.name.toLowerCase()}', ` +
+      this.output +
+      ')\n'
   }
 
   // add instance methods

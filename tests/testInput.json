@@ -1,17 +1,17 @@
 {
-  "tableA": {
-    "fieldA": {
+  "User": {
+    "name": {
       "type": "string"
     },
-    "fieldB": {
+    "age": {
       "type": "Sequelize.STRING"
     }
   },
-  "tableB": {
-    "fieldA": {
+  "Product": {
+    "title": {
       "type": "Sequelize.STRING"
     },
-    "fieldB": {
+    "quantity": {
       "type": "Sequelize.STRING"
     }
   }
