@@ -11,8 +11,7 @@
         "type": "Sequelize.STRING"
       },
       "age": {
-        "type": "Sequelize.INTEGER",
-        "defaultValue": 20
+        "type": "Sequelize.INTEGER"
       }
     },
     "Product": {

@@ -8,6 +8,13 @@ const fs = require('fs')
 
 const operator = require('./src').operator
 
+const api = (inputFile, outputPath) => {
+  fs.readFile(inputFile, (err, data) => {
+    if (err) throw err
+    operator(outputPath, JSON.parse(data))
+  })
+}
+
 program
   .version(pkg.version)
   .command('lay <JSONPath> <buildPath>')
@@ -16,11 +23,9 @@ program
   .action((JSONPath, buildPath) => {
     console.log(chalk.blue('json path:'), JSONPath)
     console.log(chalk.blue('build destination path:'), buildPath)
-    fs.readFile(JSONPath, (err, data) => {
-      if (err) throw err
-      // insert logic
-      operator(buildPath, JSON.parse(data))
-    })
+    api(JSONPath, buildPath)
   })
 
 program.parse(process.argv)
+
+module.exports = api
