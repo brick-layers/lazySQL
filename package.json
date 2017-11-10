@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description":
     "An unopinionated Sequelize boilerplate builder, with models and associations.",
-  "main": "index.js",
+  "main": "api.js",
   "repository": "git@github.com:brick-layers/lazySQL.git",
   "author": "brick-layers",
   "license": "MIT",

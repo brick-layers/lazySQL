@@ -4,16 +4,8 @@
 const program = require('commander')
 const chalk = require('chalk')
 const pkg = require('./package.json')
-const fs = require('fs')
 
-const operator = require('./src').operator
-
-const api = (inputFile, outputPath) => {
-  fs.readFile(inputFile, (err, data) => {
-    if (err) throw err
-    operator(outputPath, JSON.parse(data))
-  })
-}
+const api = require('./api')
 
 program
   .version(pkg.version)
@@ -27,5 +19,3 @@ program
   })
 
 program.parse(process.argv)
-
-module.exports = api
