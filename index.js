@@ -5,7 +5,7 @@ const program = require('commander')
 const chalk = require('chalk')
 const pkg = require('./package.json')
 
-const api = require('./api')
+const { api } = require('./api')
 
 program
   .version(pkg.version)
