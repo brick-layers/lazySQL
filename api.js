@@ -1,5 +1,5 @@
 const fs = require('fs')
-const operator = require('./src').operator
+const { operator, createConfigFile } = require('./src')
 
 const api = (inputFile, outputPath) => {
   fs.readFile(inputFile, (err, data) => {
@@ -8,4 +8,4 @@ const api = (inputFile, outputPath) => {
   })
 }
 
-module.exports = api
+module.exports = { api, createConfigFile }

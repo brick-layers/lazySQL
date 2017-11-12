@@ -1,6 +1,6 @@
 {
   "name": "lazysql",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description":
     "An unopinionated Sequelize boilerplate builder, with models and associations.",
   "main": "api.js",
@@ -11,6 +11,7 @@
   "scripts": {
     "start":
       "yarn run clear && node index.js lay tests/testInput.json tests/output",
+    "testConfig": "yarn run clear && node ./tests/jsObjToJsonFile.js",
     "clear": "rm -rf tests/output"
   },
   "bin": {

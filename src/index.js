@@ -6,19 +6,25 @@ const Model = require('./_models')
 const ModelIndex = require('./_models-index')
 const prettier = require('prettier')
 
+const PRETTIER_SETTINGS = {
+  semi: false,
+  singleQuote: true,
+  trailingComma: 'none'
+}
+
 const operator = (buildPath, data) => {
   // Create /destination directory
-  if (!fs.existsSync(buildPath)) {
-    fs.mkdirSync(buildPath)
-  }
+  // if (!fs.existsSync(buildPath)) {
+  //   fs.mkdirSync(buildPath)
+  // }
 
   // Create root index file
   const index = new Index()
-  writeFile(buildPath, 'index.js', index.output)
+  createFile(buildPath, 'index.js', index.output)
 
   // Create db file
   const db = new Db(data.db)
-  writeFile(buildPath, 'db.js', db.output)
+  createFile(buildPath, 'db.js', db.output)
 
   // Create array of Models
   const models = Object.keys(data.models).map(
@@ -27,22 +33,48 @@ const operator = (buildPath, data) => {
 
   // Write file for each model in /models directory
   models.forEach(model =>
-    writeFile(buildPath + '/models', model.filename, model.output)
+    createFile(buildPath + '/models', model.filename, model.output)
   )
 
   // Create /models/index.js file
   const modelIndex = new ModelIndex(models, data.associations)
-  writeFile(buildPath + '/models', 'index.js', modelIndex.output)
+  createFile(buildPath + '/models', 'index.js', modelIndex.output)
 }
 
-const writeFile = (buildPath, fileName, content) => {
+const checkPath = buildPath => {
   if (!fs.existsSync(buildPath)) {
     fs.mkdirSync(buildPath)
   }
-  content = prettier.format(content, { semi: false, singleQuote: true })
+}
+
+const writeFile = (buildPath, fileName, content) => {
   fs.writeFile(`${buildPath}/${fileName}`, content, err => {
     if (err) console.log(err)
   })
 }
 
-module.exports = { operator }
+const createFile = (buildPath, fileName, content) => {
+  checkPath(buildPath)
+  content = prettier.format(content, PRETTIER_SETTINGS)
+  writeFile(buildPath, fileName, content)
+}
+
+const prettierFixForJSON = content => {
+  console.log('---- creating configuration file')
+  console.log('obj', content)
+  const fPrettier = 'const file = '
+  content = fPrettier + JSON.stringify(content, null, '\t')
+  console.log('stringified -->', content)
+  content = content.slice(fPrettier.length)
+  console.log('final -->', content)
+  return content
+}
+
+const createConfigFile = (fileName, buildPath, jsObj) => {
+  checkPath(buildPath)
+  const formattedObject = prettierFixForJSON(jsObj)
+  writeFile(buildPath, fileName, formattedObject)
+  console.log(`created configuration file: ${fileName} in ${buildPath}`)
+}
+
+module.exports = { operator, createConfigFile }
