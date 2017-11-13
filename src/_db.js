@@ -1,7 +1,7 @@
 class Db {
   constructor (data) {
     this.URI = data.URI
-    this.options = data.options
+    this.options = data.options === undefined ? '' : data.options
     this.output = ''
 
     // magic
