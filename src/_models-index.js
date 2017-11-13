@@ -5,7 +5,9 @@ class Index {
 
     // magic
     this.addImports()
-    this.addAssociations(associations)
+    if (associations.length) {
+      this.addAssociations(associations)
+    }
     this.addExports()
   }
 

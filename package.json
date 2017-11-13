@@ -1,6 +1,6 @@
 {
   "name": "lazysql",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description":
     "An unopinionated Sequelize boilerplate builder, with models and associations.",
   "main": "api.js",
