@@ -25,17 +25,21 @@
       }
     }
   },
-  "associations": {
-    "User": {
-      "hasMany": {
-        "Product": null
+  "associations": [
+    {
+      "User": {
+        "hasMany": {
+          "Product": null
+        }
       }
     },
-    "Product": {
-      "belongsToMany": {
-        "User": { "through": "UserProduct" }
+    {
+      "Product": {
+        "belongsToMany": {
+          "User": { "through": "UserProduct" }
+        }
       }
     }
-  },
+  ],
   "options": {}
 }

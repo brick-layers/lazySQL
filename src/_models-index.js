@@ -17,15 +17,14 @@ class Index {
   }
 
   addAssociations (associations) {
-    Object.keys(associations).forEach(key => {
-      const type = Object.keys(associations[key])[0]
-      const targetObj = associations[key][type]
-      const target = Object.keys(targetObj)[0]
-      const options = targetObj[target]
-        ? ', ' + JSON.stringify(targetObj[target])
-        : ''
+    associations.forEach(association => {
+      const source = Object.keys(association)[0]
+      const type = Object.keys(association[source])[0]
+      const target = Object.keys(association[source][type])[0]
+      const option = association[source][type][target]
 
-      const line = `${key}.${type}(${target}${options})\n`
+      const options = option ? ', ' + JSON.stringify(option) : ''
+      const line = `${source}.${type}(${target}${options})\n`
 
       this.output += line
     })
