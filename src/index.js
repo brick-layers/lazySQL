@@ -13,11 +13,6 @@ const PRETTIER_SETTINGS = {
 }
 
 const operator = (buildPath, data) => {
-  // Create /destination directory
-  // if (!fs.existsSync(buildPath)) {
-  //   fs.mkdirSync(buildPath)
-  // }
-
   // Create root index file
   const index = new Index()
   createFile(buildPath, 'index.js', index.output)
@@ -37,6 +32,7 @@ const operator = (buildPath, data) => {
   )
 
   // Create /models/index.js file
+  // handles model associations
   const modelIndex = new ModelIndex(models, data.associations)
   createFile(buildPath + '/models', 'index.js', modelIndex.output)
 }
@@ -60,19 +56,17 @@ const createFile = (buildPath, fileName, content) => {
 }
 
 const prettierFixForJSON = content => {
-  console.log('---- creating configuration file')
-  console.log('obj', content)
   const fPrettier = 'const file = '
   content = fPrettier + JSON.stringify(content, null, '\t')
-  console.log('stringified -->', content)
+  content = prettier.format(content, PRETTIER_SETTINGS)
   content = content.slice(fPrettier.length)
-  console.log('final -->', content)
   return content
 }
 
 const createConfigFile = (fileName, buildPath, jsObj) => {
   checkPath(buildPath)
-  const formattedObject = prettierFixForJSON(jsObj)
+  // const formattedObject = prettierFixForJSON(jsObj)
+  const formattedObject = JSON.stringify(jsObj)
   writeFile(buildPath, fileName, formattedObject)
   console.log(`created configuration file: ${fileName} in ${buildPath}`)
 }
