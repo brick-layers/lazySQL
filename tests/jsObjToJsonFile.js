@@ -18,6 +18,6 @@
 const fs = require('fs')
 const { api } = require('../api')
 
-// const file = fs.readFileSync('fack.json')
+// const file = fs.readFileSync('testbad.json')
 
-api('./tests/fack.json', 'tests/output/')
+api('./tests/testbad.json', 'tests/output/')
